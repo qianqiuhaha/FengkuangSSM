@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 根元素是mapper，该元素的namespace属性值相当于该mapper的唯一标识 -->
+<mapper namespace="com.qiuqian.dao.UserMapper">
+    <!-- SQL的id需要与Mapper接口的方法名相同  -->
+    <insert id="saveUser">
+        insert into users_inf values (null, #{title}, #{content})
+    </insert>
+    <select id="findUsers" resultType="User">
+        select  news_id id, news_title title, news_content content from users_inf where news_id > #{id}
+    </select>
+
+
+    <!-- select必须指定resultType或resultMap两个属性的其中之一
+    此处指定结果的每行记录应该映射成News对象
+    由于News对象的三个属性分别为id、title、content
+    所以此处查询出来的结果集的列别名也被定义成id、title、content
+    这样才能保证MyBatis执行同名映射
+    m
+     -->
+<!--mybatis要为结果集的每一行创建对象，这个创建由对象工厂完成-->
+
+</mapper>
